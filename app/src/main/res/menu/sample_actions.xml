@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_qrscan"
+        android:icon="@drawable/ic_qrscan"
+        android:title="@string/qrscan"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_settings"
+        android:title="@string/menu_settings"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_test_newsms"
+        android:title="模拟新短信"
+        app:showAsAction="never" />
+
+
+</menu>

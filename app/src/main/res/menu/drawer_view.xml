@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_checked"
+            android:icon="@drawable/ic_checked"
+            android:title="登录密码" />
+        <item
+            android:id="@+id/nav_bank"
+            android:icon="@drawable/ic_nav_count"
+            android:title="银行短信查询" />
+        <item
+            android:id="@+id/nav_ticket"
+            android:icon="@drawable/ic_nav_count"
+            android:title="车票短信查询" />
+        <item
+            android:id="@+id/nav_place"
+            android:icon="@drawable/ic_nav_count"
+            android:title="发件人归属地查询" />
+
+        <item
+            android:id="@+id/nav_tag"
+            android:icon="@drawable/ic_nav_count"
+            android:title="标签" />
+    </group>
+
+    <item android:title="@string/about">
+        <menu>
+            <item
+                android:id="@+id/nav_help"
+                android:icon="@drawable/ic_help"
+                android:title="@string/help" />
+            <item
+                android:id="@+id/nav_about"
+                android:icon="@drawable/ic_face"
+                android:title="@string/app_name" />
+
+        </menu>
+    </item>
+
+</menu>

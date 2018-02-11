@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<litepal>
+    <dbname value="ezbankDatabase"></dbname>
+    <version value="7"></version>
+
+    <list>
+        <mapping class="me.ez0ne.ouring.model.BankCard"></mapping>
+        <mapping class="me.ez0ne.ouring.model.Express"></mapping>
+        <mapping class="me.ez0ne.ouring.model.Ticket"></mapping>
+        <mapping class="me.ez0ne.ouring.bean.StringSMS"></mapping>
+        <mapping class="me.ez0ne.ouring.tag.Message"></mapping>
+    </list>
+
+
+</litepal>

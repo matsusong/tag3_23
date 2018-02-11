@@ -1,0 +1,45 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "25.0.3"
+
+    defaultConfig {
+        applicationId "me.ez0ne.ouring"
+        minSdkVersion 16
+        targetSdkVersion 21
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.2.0'
+    compile 'com.android.support:support-v4:23.2.0'
+    compile 'com.android.support:design:23.2.0'
+    compile 'com.android.support:cardview-v7:23.2.0'
+    compile 'com.diogobernardino:williamchart:2.2'
+    compile 'me.dm7.barcodescanner:zbar:1.8.4'
+    compile 'com.github.clans:fab:1.6.3'
+    compile 'org.litepal.android:core:1.6.1'
+    compile 'com.jcodecraeer:xrecyclerview:1.2.7'
+    compile 'com.github.zzz40500:android-shapeLoadingView:1.0.3.2'
+
+    compile 'com.github.PhilJay:MPAndroidChart:v3.0.2'
+    compile 'com.github.orangegangsters:lollipin:1.8.1@aar'
+    compile 'com.github.omadahealth.typefaceview:typefaceview:1.3.0@aar'
+    compile 'com.github.traex.rippleeffect:ripple:1.3.1-OG'
+    compile 'org.xutils:xutils:3.5.0'
+    annotationProcessor 'com.zhy:mpermission-compiler:1.0.0'
+    compile 'com.zhy:mpermission-api:1.0.0'
+    implementation 'com.android.support:recyclerview-v7:23.0.2'
+
+}

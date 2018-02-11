@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="me.ez0ne.ouring.map.Mapview"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_blue_light"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/newback"/>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="37dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:gravity="center"/>
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="me.ez0ne.ouring.map.Mapview">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/application_white"
+        android:scrollbars="none"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:orientation="vertical">
+
+            <!-- 图表 -->
+            <me.ez0ne.ouring.map.ChinaMapView
+                android:id="@+id/vp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/application_line_gray" />
+
+            <!-- 表格 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/application_white"
+                android:gravity="center"
+                android:paddingEnd="15dp"
+                android:paddingStart="15dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/linearlayout_border_green"
+                    android:orientation="horizontal"
+                    android:padding="2dp">
+
+                    <!-- 第1列 -->
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="61dp"
+                            android:background="@color/table1"
+                            android:gravity="center"
+                            android:text="选择"
+                            android:textColor="@color/application_text_gray"
+                            android:textSize="13sp" />
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/application_green" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="61dp"
+                            android:background="@color/table1"
+                            android:gravity="center"
+                            android:text="最多"
+                            android:textColor="@color/application_text_gray"
+                            android:textSize="13sp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/application_green" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="61dp"
+                            android:background="@color/table1"
+                            android:gravity="center"
+                            android:text="最少"
+                            android:textColor="@color/application_text_gray"
+                            android:textSize="13sp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/application_green" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/application_green" />
+
+                    <!-- 第2列 -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="7"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:background="@color/table2"
+                            android:gravity="center"
+                            android:text="地点"
+                            android:textColor="@color/application_green"
+                            android:textSize="13sp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/application_green" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:background="@color/table2"
+                            android:gravity="center"
+                            android:text="数量"
+                            android:textColor="@color/application_green"
+                            android:textSize="13sp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/application_green" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:background="@color/table2"
+                            android:gravity="center"
+                            android:text="地点"
+                            android:textColor="@color/application_green"
+                            android:textSize="13sp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/application_green" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:background="@color/table2"
+                            android:gravity="center"
+                            android:text="数量"
+                            android:textColor="@color/application_green"
+                            android:textSize="13sp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/application_green" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:background="@color/table2"
+                            android:gravity="center"
+                            android:text="地点"
+                            android:textColor="@color/application_green"
+                            android:textSize="13sp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/application_green" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:background="@color/table2"
+                            android:gravity="center"
+                            android:text="数量"
+                            android:textColor="@color/application_green"
+                            android:textSize="13sp" />
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/application_green" />
+
+                    <!-- 第3列 -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="20"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/choPlace"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:background="@color/table3"
+                            android:gravity="center"
+                            android:textColor="@color/application_text_gray"
+                            android:textSize="13sp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/application_green" />
+
+                        <TextView
+                            android:id="@+id/choCount"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:background="@color/table3"
+                            android:gravity="center"
+                            android:textColor="@color/application_text_gray"
+                            android:textSize="13sp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/application_green" />
+
+                        <TextView
+                            android:id="@+id/maxPlace"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:background="@color/table3"
+                            android:gravity="center"
+                            android:textColor="@color/application_text_gray"
+                            android:textSize="13sp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/application_green" />
+
+                        <TextView
+                            android:id="@+id/maxCount"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:background="@color/table3"
+                            android:gravity="center"
+                            android:textColor="@color/application_text_gray"
+                            android:textSize="13sp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/application_green" />
+
+                        <TextView
+                            android:id="@+id/minPlace"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:background="@color/table3"
+                            android:gravity="center"
+                            android:textColor="@color/application_text_gray"
+                            android:textSize="13sp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/application_green" />
+
+                        <TextView
+                            android:id="@+id/minCount"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:background="@color/table3"
+                            android:gravity="center"
+                            android:textColor="@color/application_text_gray"
+                            android:textSize="13sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+</RelativeLayout>
+</LinearLayout>

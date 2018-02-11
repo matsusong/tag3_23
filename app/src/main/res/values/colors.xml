@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- THEME COLORS -->
+    <color name="colorPrimary">#1976D2</color>
+    <color name="colorPrimaryDark">#1565C0</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="window_background">#FFF5F5F5</color>
+    <color name="application_line_gray">#D0D0D0</color>
+    <color name="application_white">#FFFFFF</color>
+    <color name="application_text_gray">#666666</color>
+    <color name="application_gray">#F6F6F6</color>
+    <color name="application_green">#59B29C</color>
+    <color name="application_orange">#F9974E</color>
+    <!--表格-->
+    <color name="table1">#D4E3E0</color>
+    <color name="table2">#F0F2F1</color>
+    <color name="table3">#F9F9F9</color>
+
+
+    <!-- GENERAL COLORS -->
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="gray">#60000000</color>
+    <color name="dark_gray">#90000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="almost_transparent">#22000000</color>
+    <color name="dark_almost_transparent">#88cccccc</color>
+
+    <color name="out_red">#EB4F38</color>
+    <color name="in_green">#11CD6E</color>
+    <color name="search_yellow">#FFF200</color>
+
+    <color name="line_gray">#1f000000</color>
+
+
+    <!--<color name="message_date_grey">#f0f0f0</color>-->
+    <color name="message_date_grey">#e7e7e7</color>
+    <color name="pink">#e91e63</color>
+    <color name="half_black">#808080</color>
+    <color name="pink_pressed">#ec407a</color>
+    <color name="red">#ff5722</color>
+    <color name="red_pressed">#ff7043</color>
+    <color name="message_bg_color">#f5f5f5</color>
+    <color name="material_text_title">#212121</color>
+    <color name="material_text_content">#9e9e9e</color>
+    <color name="light_blue">#03a9f4</color>
+    <color name="light_orange">#f57c00</color>
+    <color name="notification_bg">#e0e0e0</color>
+    <color name="notification_text_color">#cfdbdc</color>
+    <color name="refresh_progress_1">#e91e63</color>
+    <color name="refresh_progress_2">#00b0ff</color>
+    <color name="refresh_progress_3">#00bcd4</color>
+    <color name="about_header_background">#1C1E22</color>
+
+
+    <color name="text_selected">#888</color>
+</resources>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android = "http://schemas.android.com/apk/res/android"
+    android:layout_height = "match_parent"
+    android:layout_width = "match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:background="@android:color/darker_gray"
+        android:visibility="visible"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@android:color/holo_blue_light"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/newback"/>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="37dp"
+            android:textSize="16sp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/create_new"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/add"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/newsearch">
+
+        <EditText
+            android:id="@+id/input"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:maxLines="1"
+            android:textCursorDrawable="@drawable/color_cursor"
+            android:inputType="text"
+            />
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="55dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:background="@drawable/findstate"
+            android:textSize="10sp"/>
+    </LinearLayout>
+    <me.ez0ne.ouring.tag.CustomView
+        android:id = "@+id/custom_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</LinearLayout>
