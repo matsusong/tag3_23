@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion 27
     buildToolsVersion "25.0.3"
 
     defaultConfig {
@@ -11,6 +11,13 @@ android {
         versionCode 1
         versionName "1.0"
     }
+
+    sourceSets { main { res.srcDirs = [ 'src/main/res/layout/tag',
+                                        'src/main/res/layout',
+                                        'src/main/res' ] } }
+
+
+
     buildTypes {
         release {
             minifyEnabled false
@@ -20,6 +27,7 @@ android {
 }
 
 dependencies {
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.2.0'

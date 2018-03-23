@@ -43,6 +43,7 @@ public class CustomView extends View {
     }
     @Override
     public boolean onFilterTouchEventForSecurity(MotionEvent event) {
+        Log.d("Debug","CustomView+"+"onFilterTouchEventForSecurity");
         if(event.getAction()==MotionEvent.ACTION_DOWN){
             float x = event.getX();
             float y = event.getY();
@@ -62,6 +63,7 @@ public class CustomView extends View {
     public CustomView(Context context, AttributeSet attrs)
     {
         super(context,attrs);
+        Log.d("Debug","CustomView+"+"CustomView");
         mpaint=new Paint(Paint.ANTI_ALIAS_FLAG);
         textPaint = new TextPaint();
         Resources resources = this.getResources();
@@ -71,7 +73,7 @@ public class CustomView extends View {
         mstring=new ArrayList<>();
         mwordSize=35;
         maxnum=4;
-        Log.d("MyView","one");
+
 
     }
 
@@ -80,7 +82,7 @@ public class CustomView extends View {
     }
 
     public void addView(List<String> string){
-        //我也不确定要不要加这个。。。
+        Log.d("Debug","CustomView+"+"addView");
         invalidate();
         mstring.clear();
         for(int i=string.size()-1;i>=0;i--)
@@ -92,14 +94,14 @@ public class CustomView extends View {
         my = new float[mstring.size()];
         mtextHeight = new float[mstring.size()];
         mtextWidth = new float[mstring.size()];
-        Log.d("MyView","two");
+
     }
 
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        Log.d("CustomView:","three");
+        Log.d("Debug","CustomView+"+"onDraw");
         currentHeight=50;
         currentWidth=50;
         textPaint.setColor(Color.BLACK);
@@ -121,7 +123,7 @@ public class CustomView extends View {
             Log.d("mydebug", "onDraw: mtextWidth[i] = "+String.valueOf(mtextWidth[i]));
             mtextHeight[i] = (textPaint.getFontMetrics().bottom-textPaint.getFontMetrics().top)*count;
             Log.d("mydebug", "onDraw: mtextHeight[i] = "+String.valueOf(mtextHeight[i]));
-            mr[i] = Math.max(mtextHeight[i],mtextWidth[i])*0.8F;
+            mr[i] = Math.max(mtextHeight[i],mtextWidth[i])*0.7F;
             Log.d("mydebug", "onDraw: mr[i] = "+String.valueOf(mr[i]));
             if(maxD<mr[i]*2)
             {
@@ -135,7 +137,7 @@ public class CustomView extends View {
                 currentWidth=50;
                 currentHeight+=maxD+50;
             }
-            mpaint.setColor(Color.GRAY);
+            mpaint.setColor(0xFFD9D9D9);
             canvas.drawCircle(currentWidth+mr[i],currentHeight+mr[i],mr[i],mpaint);
             mx[i] = currentWidth+mr[i];
             my[i] = currentHeight+mr[i];

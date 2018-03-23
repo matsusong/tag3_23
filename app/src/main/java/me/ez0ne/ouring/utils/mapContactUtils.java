@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -20,6 +21,7 @@ import java.util.List;
 
 import me.ez0ne.ouring.App;
 import me.ez0ne.ouring.bean.Contacts;
+import me.ez0ne.ouring.bean.Detail;
 import me.ez0ne.ouring.bean.StringSMS;
 
 /**
@@ -31,10 +33,11 @@ public class mapContactUtils {
     private List<Contacts> list;
 
 
-    private String place;
+    private String place,phone;
     private int count;
     private String result="Return";
     private Context mcontext;
+
     public mapContactUtils(Context context){
         this.mcontext=context;
     }
@@ -70,6 +73,25 @@ public class mapContactUtils {
         sms.setCount(count);
         return sms;
     }
+
+    public void getContacts(){
+        Cursor cursor = mcontext.getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+                null, null, null, null);
+        while (cursor.moveToNext()) {
+            String phoneNumber = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));//电话号码
+            String phoneName = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));//姓名
+            Log.i("phonenumber", phoneNumber.length()+""+phoneNumber.toString());
+            phoneNumber=phoneNumber.substring(0,1)+phoneNumber.substring(2,5)+phoneNumber.substring(6,9)
+                    +phoneNumber.substring(10,13);
+            Log.i("phonenumber", phoneNumber);
+            Log.i("phoneName", phoneName);
+            Contacts contacts=new Contacts();
+            contacts.setPhone(phoneNumber);
+            contacts.setName(phoneName);
+            contacts.saveThrows();
+        }
+    }
+
     //遍历收件箱获取号码归属地存入数据库
     public void getPlaceToDB(){
         SQLiteDatabase db = LitePal.getDatabase();
@@ -87,6 +109,7 @@ public class mapContactUtils {
             }
             if (strAddress.length() == 11) {
                 RequestParams params = new RequestParams(App.appip + strAddress + "&key=22a6ba14995ce26dd0002216be51dabb");
+                final String finalStrAddress = strAddress;
                 x.http().post(params, new Callback.CommonCallback<String>() {
                     @Override
                     public void onSuccess(String result) {
@@ -98,11 +121,20 @@ public class mapContactUtils {
                                 JSONObject re = json.getJSONObject("result");
                                 String province = re.getString("province");
                                 Log.i("place", province);
+
+                                //表1
                                 StringSMS stringsms = new StringSMS();
-                                final List<StringSMS> list_sms = DataSupport.where("place='江苏'").find(StringSMS.class);
+                                final List<StringSMS> list_sms = DataSupport.where("place=?",province).find(StringSMS.class);
                                 count = list_sms.get(list_sms.size() - 1).getCount();
                                 stringsms.setCount(count + 1);
                                 stringsms.updateAll("place=?", province);
+
+                                //表2
+                                Detail detail=new Detail();
+                                detail.setPhone(finalStrAddress);
+                                detail.setStringsms(strbody);
+                                detail.setPlace(province);
+                                detail.saveThrows();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -129,6 +161,12 @@ public class mapContactUtils {
         cursor2.close();
     }
 
+    public List<Detail> getDetails(String place){
+        final List<Detail> list=DataSupport.where("place=?",place).find(Detail.class);
+
+        return list;
+    }
+
     public StringSMS getIndexInfo(int i){
         StringSMS sms=new StringSMS();
         final List<StringSMS> list_sms2=DataSupport.order("count desc").find(StringSMS.class);
@@ -147,8 +185,16 @@ public class mapContactUtils {
         StringSMS sms=new StringSMS();
         final List<StringSMS> list_sms2=DataSupport.order("count asc").find(StringSMS.class);
         Log.i("result place",list_sms2.get(0).getPlace() );
-        place=list_sms2.get(0).getPlace();
-        count=list_sms2.get(0).getCount();
+        for(int i=0;i<list_sms2.size();i++){
+            if(list_sms2.get(i).getCount()==0)
+                i++;
+            else {
+                place=list_sms2.get(i).getPlace();
+                count=list_sms2.get(i).getCount();
+                break;
+            }
+        }
+
         sms.setPlace(place);
         sms.setCount(count);
         return sms;

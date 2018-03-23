@@ -11,7 +11,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -32,7 +32,7 @@ import me.ez0ne.ouring.R;
 import me.ez0ne.ouring.map.Mapview;
 import me.ez0ne.ouring.model.BankCard;
 import me.ez0ne.ouring.service.ShowInfoService;
-import me.ez0ne.ouring.tag.tagview;
+import me.ez0ne.ouring.tag.TagViewActivity;
 import me.ez0ne.ouring.utils.SmsUtils;
 import me.ez0ne.ouring.utils.TaskUtils;
 import me.ez0ne.ouring.utils.TicketUtils;
@@ -172,8 +172,8 @@ public class MainActivity extends PinCompatActivity {
     private void setViewPager(String tag){
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         TabLayout tabLayout1 = (TabLayout) findViewById(R.id.tabs);
-        tabLayout1.removeAllTabs();
         viewPager.removeAllViews();
+        tabLayout1.removeAllViews();
         if(tag.equals("ticket")) {
             Adapter adapter = new Adapter(getSupportFragmentManager());
             adapter.addFragment(new ticketFragment(), "车票");
@@ -187,8 +187,6 @@ public class MainActivity extends PinCompatActivity {
             adapter.notifyDataSetChanged();
             viewPager.setAdapter(adapter);
         }
-
-
         tabLayout1.setupWithViewPager(viewPager);
     }
 
@@ -226,7 +224,7 @@ public class MainActivity extends PinCompatActivity {
 
                             case R.id.nav_tag:
                                 //标签
-                                Intent intent=new Intent(MainActivity.this,tagview.class);
+                                Intent intent=new Intent(MainActivity.this,TagViewActivity.class);
                                 startActivity(intent);
                                 break;
                             default:
@@ -275,6 +273,7 @@ public class MainActivity extends PinCompatActivity {
            /* OnlyTicketToDb();*/
            mapContavtUtils.initDB();
            mapContavtUtils.getPlaceToDB();
+           mapContavtUtils.getContacts();
             OnlySmsToDb();// 初始化数据库
             startActivity(new Intent(this, SearchActivity.class));
             // @@@ 需要修改，临时为引导页
@@ -327,7 +326,7 @@ public class MainActivity extends PinCompatActivity {
 
 
     // Tabs Pager Adapter 偷懒了...
-    static class Adapter extends FragmentPagerAdapter {
+    static class Adapter extends FragmentStatePagerAdapter {
         private final List<Fragment> mFragments = new ArrayList<>();
         private final List<String> mFragmentTitles = new ArrayList<>();
 

@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="me.ez0ne.ouring">
+          package="me.ez0ne.ouring">
 
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_SMS" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
 
     <application
         android:name=".App"
@@ -19,49 +18,57 @@
         android:theme="@style/AppTheme">
         <activity android:name=".ui.MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
         <activity android:name=".ui.ChooseMenu">
+            <action android:name="android.intent.action.MAIN"/>
 
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.LAUNCHER" />
-
+            <category android:name="android.intent.category.DEFAULT"/>
+            <category android:name="android.intent.category.LAUNCHER"/>
         </activity>
-        <activity android:name=".ui.QrScanActivity" />
-
+        <activity android:name=".ui.QrScanActivity"/>
         <activity android:name=".map.Mapview">
+            <action android:name="android.intent.action.MAIN"/>
 
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.DEFAULT" />
-            <category android:name="android.intent.category.LAUNCHER" />
+            <category android:name="android.intent.category.DEFAULT"/>
+            <category android:name="android.intent.category.LAUNCHER"/>
         </activity>
-        <activity android:name=".tag.tagview">
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".map.DetailSearch">
+            <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+            <category android:name="android.intent.category.DEFAULT"/>
+            <category android:name="android.intent.category.LAUNCHER"/>
         </activity>
-        <activity android:name=".tag.SelectContactsActivity" />
-        <activity android:name=".tag.ShowMessageActivity"></activity>
-        <activity android:name=".ui.SearchActivity" />
-        <activity android:name=".ui.PinActivity" />
-        <activity android:name=".ui.GuideActivity" />
+        <activity android:name=".tag.TagViewActivity">
+            <action android:name="android.intent.action.MAIN"/>
+
+            <category android:name="android.intent.category.LAUNCHER"/>
+        </activity>
+        <activity android:name=".tag.SelectContactsActivity"/>
+        <activity android:name=".tag.ShowMessageActivity"/>
+        <activity android:name=".ui.SearchActivity"/>
+        <activity android:name=".ui.PinActivity"/>
+        <activity android:name=".ui.GuideActivity"/>
+
         <receiver android:name=".service.SMSBroadcastReceiver">
-            <intent-filter android:priority="1000">　
+            <intent-filter android:priority="1000">
+
+                　
+
+
                 <!-- 设置优先级为最高 -->
-                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
             </intent-filter>
-
         </receiver>
+
+        <activity android:name=".tag.AddTagActivity">
+        </activity>
+        <activity android:name=".tag.ShowContentOfTagActivity">
+        </activity>
     </application>
-
-
 
 </manifest>

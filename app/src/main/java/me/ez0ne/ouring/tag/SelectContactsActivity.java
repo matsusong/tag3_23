@@ -16,6 +16,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -40,19 +41,31 @@ public class SelectContactsActivity extends AppCompatActivity implements View.On
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.d("Debug","SelectContactsActivity+"+"onActivityResult");
         if(resultCode==2){
             setResult(2);
             finish();
         }
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ActivityCollecter.remove(this);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d("Debug","SelectContactsActivity+"+"onCreate");
         setContentView(R.layout.activity_select_contacts);
+        ActivityCollecter.AddActivity(this);
         initScreen();
         bind();
-        tag= getIntent().getStringExtra("tag");
+
+        //Toast.makeText(this, tag, Toast.LENGTH_SHORT).show();
         //从前一个活动传来的原始信息,号码保证无重复
+        tag= getIntent().getStringExtra("tag");
         rawData = (List<String>)getIntent().getSerializableExtra("data");
         data = new ArrayList<>();
         rdata = new ArrayList<>();
@@ -87,8 +100,9 @@ public class SelectContactsActivity extends AppCompatActivity implements View.On
     }
     private void bind()
     {
-        recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
-        back = (Button)findViewById(R.id.back);
+        Log.d("Debug","SelectContactsActivity+"+"bind");
+        recyclerView = (RecyclerView)findViewById(R.id.recyclerView_selectcontact);
+        back = (Button)findViewById(R.id.bt_selectcontact_back);
         back.setOnClickListener(this);
     }
     //http://blog.csdn.net/guolin_blog/article/details/51763825
@@ -100,6 +114,7 @@ public class SelectContactsActivity extends AppCompatActivity implements View.On
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        Log.d("Debug","SelectContactsActivity+"+"onRequestPermissionsResult");
         switch (requestCode){
             case 2:
                 if(grantResults.length>0&&grantResults[0]==PackageManager.PERMISSION_GRANTED){
@@ -135,8 +150,9 @@ public class SelectContactsActivity extends AppCompatActivity implements View.On
 
     @Override
     public void onClick(View v) {
+        Log.d("Debug","SelectContactsActivity+"+"onClick");
         switch (v.getId()){
-            case R.id.back:
+            case R.id.bt_selectcontact_back:
                 finish();
                 break;
         }
@@ -144,6 +160,7 @@ public class SelectContactsActivity extends AppCompatActivity implements View.On
 
     // TODO: 2018/1/31 报告说有些号码在通讯录中有保存的短信还是显示不了，是否是这个函数的问题
     public String getDisplayNameByNumber(String phoneNum) {
+        Log.d("Debug","SelectContactsActivity+"+"getDisplayNameByNumber");
         String contactName = "";
         ContentResolver cr = getContentResolver();
         Cursor pCur = cr.query(
@@ -156,7 +173,8 @@ public class SelectContactsActivity extends AppCompatActivity implements View.On
         }
         if(!"".equals(contactName))
             return contactName;
-        pCur = cr.query(Uri.parse("content://icc/adn"),null,"number = ?",new String[]{phoneNum},null);
+
+       /* pCur = cr.query(Uri.parse("content://icc/adn"),null,"number = ?",new String[]{phoneNum},null);
         if(pCur!=null&&pCur.moveToFirst()){
             contactName = pCur .getString(pCur.getColumnIndex("tag"));
             pCur.close();
@@ -167,11 +185,12 @@ public class SelectContactsActivity extends AppCompatActivity implements View.On
         if(pCur!=null&&pCur.moveToFirst()){
             contactName = pCur .getString(pCur.getColumnIndex("tag"));
             pCur.close();
-        }
+        }*/
         return contactName;
     }
 
     private void initScreen(){
+        Log.d("Debug","SelectContactsActivity+"+"initScreen");
         if (Build.VERSION.SDK_INT >= 21) {
             View decorView = getWindow().getDecorView();
             int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN

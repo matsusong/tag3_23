@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">信息管家测试一</string>
+    <string name="app_name">智能信息管家</string>
 
     <string name="cheese_ipsum">测试测试，测试，测试测试测试，测试测试，测试，测试测试测试，测试测试，测试，测试测试测试，测试测试，测试，测试测试测试，测试测试，测试，测试测试测试，测试测试，测试，测试测试测试。</string>
     <string name="checkin">Checkin</string>

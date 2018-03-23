@@ -15,6 +15,15 @@ public class Message extends DataSupport {
     private String tag;
     private String place;
     private String date;
+    private int status;//判断接收方还是发送方
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
 
     public String getDate() {
         return date;

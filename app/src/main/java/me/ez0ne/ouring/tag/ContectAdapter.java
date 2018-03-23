@@ -2,6 +2,7 @@ package me.ez0ne.ouring.tag;
 
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,7 @@ public class ContectAdapter extends RecyclerView.Adapter<ContectAdapter.ViewHold
         TextView textView2;
         public ViewHolder(View itemView) {
             super(itemView);
+            Log.d("Debug","ViewHolder+"+"ViewHolder");
             textView1 = (TextView)itemView.findViewById(R.id.tv_name);
             textView2=(TextView)itemView.findViewById(R.id.tv_split);
         }
@@ -32,6 +34,7 @@ public class ContectAdapter extends RecyclerView.Adapter<ContectAdapter.ViewHold
 
 
     public ContectAdapter(List<String> list1,List<String> list2,SelectContactsActivity a,String t) {
+        Log.d("Debug","ContectAdapter+"+"ContectAdapter");
         this.list1 = list1;//人名
         this.list2 = list2;//号码
         activity = a;
@@ -40,12 +43,14 @@ public class ContectAdapter extends RecyclerView.Adapter<ContectAdapter.ViewHold
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        Log.d("Debug","ContectAdapter+"+"onCreateViewHolder");
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.contact_item,parent,false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
+        Log.d("Debug","ContectAdapter+"+"onBindViewHolder");
         holder.textView1.setText(list1.get(position));
         if(tag==null){
             holder.textView1.setOnClickListener(new View.OnClickListener() {
@@ -53,10 +58,11 @@ public class ContectAdapter extends RecyclerView.Adapter<ContectAdapter.ViewHold
                 public void onClick(View v) {
                     Intent intent = new Intent(activity,ShowMessageActivity.class);
                     intent.putExtra("phoneNumber",list2.get(position));
-                    activity.startActivityForResult(intent,1);
+                    activity.startActivity(intent);
                 }
             });
         }
+        /*
         else{
             holder.textView1.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -67,11 +73,12 @@ public class ContectAdapter extends RecyclerView.Adapter<ContectAdapter.ViewHold
                     activity.startActivity(intent);
                 }
             });
-        }
+        }*/
     }
 
     @Override
     public int getItemCount() {
+        Log.d("Debug","ContectAdapter+"+"getItemCount");
         return list1.size();
     }
 }

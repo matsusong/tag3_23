@@ -2,9 +2,11 @@ package me.ez0ne.ouring.map;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -21,25 +23,33 @@ import java.util.List;
 
 import me.ez0ne.ouring.R;
 import me.ez0ne.ouring.bean.StringSMS;
+import me.ez0ne.ouring.ui.MainActivity;
 import me.ez0ne.ouring.utils.mapContactUtils;
 
 /**
  * Created by Cerian on 2018/2/11.
  */
 
-public class Mapview extends AppCompatActivity {
+public class Mapview extends AppCompatActivity implements View.OnClickListener{
     ChinaMapView lView;
     private Context context;
     private Button bt_back;
     private TextView tv_maxPlace,tv_maxCount,tv_minPlace,tv_minCount,tv_choPlace,tv_choCount;
+    private TextView tv_selectMap,tv_selectDetails;
     private static final int REQUECT_CODE_SDCARD =2 ;
+    private String permission[]={Manifest.permission.READ_SMS,Manifest.permission.READ_CONTACTS};
     private mapContactUtils contactUtils=new mapContactUtils(Mapview.this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
+/**
+ * 改变返回时页面按钮颜色
+ */
 
-        MPermissions.requestPermissions(Mapview.this, REQUECT_CODE_SDCARD, Manifest.permission.READ_SMS);
+
+
+        MPermissions.requestPermissions(Mapview.this, REQUECT_CODE_SDCARD,permission);
 
         tv_maxCount= (TextView) findViewById(R.id.maxCount);
         tv_maxPlace= (TextView) findViewById(R.id.maxPlace);
@@ -47,13 +57,27 @@ public class Mapview extends AppCompatActivity {
         tv_minPlace= (TextView) findViewById(R.id.minPlace);
         tv_choPlace= (TextView) findViewById(R.id.choPlace);
         tv_choCount= (TextView) findViewById(R.id.choCount);
-        bt_back= (Button) findViewById(R.id.back);
-        bt_back.setOnClickListener(new View.OnClickListener() {
+        tv_selectMap= (TextView) findViewById(R.id.selectmap);
+        tv_selectDetails= (TextView) findViewById(R.id.selectordetail);
+        bt_back= (Button) findViewById(R.id.back2);
+        bt_back.setOnClickListener(this);
+        tv_selectDetails.setOnClickListener(this);
+        String from=getIntent().getStringExtra("from");
+        if(from!=null) {
+            if (from.equals("detail")) {
+                tv_selectMap.setTextColor(ContextCompat.getColor(Mapview.this, R.color.application_white));
+                tv_selectMap.setBackgroundColor(ContextCompat.getColor(this, R.color.application_green));
+                tv_selectDetails.setTextColor(ContextCompat.getColor(this, R.color.application_text_gray));
+                tv_selectDetails.setBackground(ContextCompat.getDrawable(this, R.drawable.textview_border));
+            }
+        }
+
+/*        bt_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
             }
-        });
+        });*/
         lView = (ChinaMapView)findViewById(R.id.vp);
         lView.setOnProvinceSelectedListener(new ChinaMapView.OnProvinceSelectedListener() {
             @Override
@@ -138,6 +162,25 @@ public class Mapview extends AppCompatActivity {
                     | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
             decorView.setSystemUiVisibility(option);
             getWindow().setStatusBarColor(Color.TRANSPARENT);
+        }
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.selectordetail:
+                tv_selectDetails.setTextColor(ContextCompat.getColor(this, R.color.application_white));
+                tv_selectDetails.setBackgroundColor(ContextCompat.getColor(this, R.color.application_green));
+                tv_selectMap.setTextColor(ContextCompat.getColor(this, R.color.application_text_gray));
+                tv_selectMap.setBackground(ContextCompat.getDrawable(this, R.drawable.textview_border));
+                Intent intent=new Intent(Mapview.this,DetailSearch.class);
+                startActivity(intent);
+                break;
+
+            case R.id.back2:
+                Intent intent1=new Intent(Mapview.this, MainActivity.class);
+                startActivity(intent1);
+                break;
         }
     }
 }
