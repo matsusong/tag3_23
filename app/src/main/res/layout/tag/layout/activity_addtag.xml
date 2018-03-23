@@ -68,9 +68,22 @@
             android:text="确认"
             android:textSize="10sp"/>
     </LinearLayout>
-
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <me.ez0ne.ouring.tag.CustomView
-        android:id="@+id/CustomView_addtag"
+        android:id="@+id/tag_view"
+        android:layout_weight="2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="0dp"/>
+
+    <me.ez0ne.ouring.tag.WaveView
+        android:layout_weight="1"
+        android:id="@+id/addtag_wave"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
+
+</LinearLayout>
+
 </LinearLayout>

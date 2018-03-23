@@ -1,5 +1,7 @@
 package me.ez0ne.ouring.tag;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
@@ -24,7 +26,7 @@ import java.util.TreeMap;
 import me.ez0ne.ouring.R;
 
 public class AddTagActivity extends AppCompatActivity  {
-    CustomView customView;
+    private CustomView customView;
     EditText input;
     Button submit,back;
     static Message message;
@@ -68,6 +70,7 @@ public class AddTagActivity extends AppCompatActivity  {
                 }
             }
         });
+
         customView.setOnClickListener(new CustomView.OnTagClickListener() {
             @Override
             public void onClick(String tag) {
@@ -78,6 +81,16 @@ public class AddTagActivity extends AppCompatActivity  {
         //将所有的tag按照出现的次数保存在list中
         List<String> data = getTagList();
         customView.addView(data);
+/*
+        ObjectAnimator moveIn = ObjectAnimator.ofFloat(customView, "translationX", -500f, 0f);
+        ObjectAnimator rotate = ObjectAnimator.ofFloat(customView, "rotation", 0f, 360f);
+        ObjectAnimator fadeInOut = ObjectAnimator.ofFloat(customView, "alpha", 1f, 0f, 1f);
+        AnimatorSet animSet = new AnimatorSet();
+        animSet.play(rotate).with(fadeInOut).after(moveIn);
+        animSet.setDuration(5000);*/
+
+        WaveView waveView = findViewById(R.id.addtag_wave);
+        waveView.setRunning(2);
     }
 
     public void bindView(){
@@ -85,7 +98,7 @@ public class AddTagActivity extends AppCompatActivity  {
         input=(EditText)findViewById(R.id.et_addtag_input);
         submit=(Button) findViewById(R.id.bt_addtag_positive);
         back=(Button) findViewById(R.id.bt_addtag_back);
-        customView=(CustomView)findViewById(R.id.CustomView_addtag);
+        customView=findViewById(R.id.tag_view);
 
 
     }

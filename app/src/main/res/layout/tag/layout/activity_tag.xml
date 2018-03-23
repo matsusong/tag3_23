@@ -66,8 +66,23 @@
             android:textSize="10sp"/>
     </LinearLayout>
 
-    <me.ez0ne.ouring.tag.CustomView
-        android:id="@+id/custom_view"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent">
+
+        <me.ez0ne.ouring.tag.CustomView
+            android:id="@+id/custom_view"
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
+
+
+        <me.ez0ne.ouring.tag.WaveView
+            android:id="@+id/wave"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
+    </LinearLayout>
+
 </LinearLayout>
